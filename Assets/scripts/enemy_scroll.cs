@@ -5,20 +5,13 @@ using UnityEngine;
 public class enemy_scroll : MonoBehaviour {
 	public float speed;
 
-
-	/* Start is called before the first frame update. */
-	void Start() {}
-
-	/* Update is called once per frame. */
-	void Update() {}
-
-	void FixedUpdate() {
+	void Update() {
 		this.transform.position += new Vector3(
 			0,
 			0,
-			-1 * Time.fixedDeltaTime
+			-1 * Time.deltaTime
 		);
 
-		Debug.Log(this.transform.position);
+		if (this.transform.position.z <= 0) { Destroy(this.gameObject); }
 	}
 }

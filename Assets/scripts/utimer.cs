@@ -3,7 +3,7 @@
  * start_time should be Time.time.
  * duration is measured in seconds.
  */
-public class utimer {
+public struct utimer {
 	public float duration;
 	public float start_time;
 
