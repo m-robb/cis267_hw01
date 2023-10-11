@@ -30,8 +30,8 @@ public class spawner : MonoBehaviour {
 
 			position = new Vector3(
 				parent.position.x,
-				0.0f,
-				5
+				parent.position.y,
+				5.00f
 			);
 
 			rotation = Quaternion.identity;

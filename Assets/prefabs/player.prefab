@@ -97,3 +97,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731563d5d7597aa4aaac43294b521737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  acceleration: 0
+  friction: 0
