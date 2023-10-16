@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-//using utimer;
 
+/*
+ * Assuming that there are five dividers (walls), meaning three paths.
+ */
 public class spawner : MonoBehaviour {
 	public GameObject enemy_prefab;
 	public GameObject[] columns;
@@ -31,7 +31,7 @@ public class spawner : MonoBehaviour {
 			position = new Vector3(
 				parent.position.x,
 				parent.position.y,
-				5.00f
+				10.00f
 			);
 
 			rotation = Quaternion.identity;
