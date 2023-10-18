@@ -1,50 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
+using static __global;
 using UnityEngine;
 
 
 public class player_movement : MonoBehaviour {
-	private position_helper positioner;
-	private SpriteRenderer sprite_renderer;
-	private float height_offset;
-	private float width_offset;
+	[System.NonSerialized] public position_helper positioner;
+	[System.NonSerialized] public Bounds bounds;
+	[System.NonSerialized] public float height_offset;
+	[System.NonSerialized] public float width_offset;
 
 	void Start() {
-		sprite_renderer = GetComponent<SpriteRenderer>();
-		height_offset = sprite_renderer.bounds.size.y / 2;
-		width_offset = sprite_renderer.bounds.size.x / 2;
+		bounds = GetComponent<SpriteRenderer>().bounds;
+		height_offset = bounds.size.y / 2;
+		width_offset = bounds.size.x / 2;
 
 		positioner.initialize();
 		positioner.timestep = Time.fixedDeltaTime;
-		positioner.drag = global.movement_drag;
-		positioner.friction = global.movement_friction;
-		positioner.gravity = global.movement_gravity;
-		positioner.jump_force = global.player_movement_jump_strength;
+		positioner.drag = movement_drag;
+		positioner.friction = movement_friction;
+		positioner.gravity = movement_gravity;
+		positioner.jump_force = player_movement_jump_strength;
 	}
 
 	void Update() {
 		positioner.move_x(Input.GetAxisRaw("horizontal"));
 		positioner.move_jump(Input.GetAxisRaw("jump"));
 		transform.position += positioner.interpolate(Time.time)
-				* global.game_speed;
+				* game_speed;
 	}
 
 	void FixedUpdate() {
 		transform.position += positioner.velocity_flush()
-				* global.game_speed;
+				* game_speed;
 
-		positioner.on_ground = grounded(global.player_floor_height);
+		positioner.on_ground = grounded(player_floor_height);
 
 		/* Enforce collisions with the floor and side walls. */
 		if (positioner.on_ground) {
 			floor_enforce();
 		}
 		if (Mathf.Abs(transform.position.x) + width_offset
-				> global.game_width/2) {
+				> game_width/2) {
 			width_enforce(Mathf.Sign(transform.position.x));
 		}
 
-		positioner.tick(global.player_movement_acceleration);
+		positioner.tick(player_movement_acceleration);
 	}
 
 	/*
@@ -61,7 +60,7 @@ public class player_movement : MonoBehaviour {
 	private void floor_enforce() {
 		transform.position = new Vector3(
 			transform.position.x,
-			global.player_floor_height + height_offset,
+			player_floor_height + height_offset,
 			transform.position.z
 		);
 	}
@@ -72,7 +71,7 @@ public class player_movement : MonoBehaviour {
 	private void width_enforce(float sign) {
 		positioner.velocity.x = 0.00f;
 		transform.position = new Vector3(
-			sign * (global.game_width/2 - width_offset),
+			sign * (game_width/2 - width_offset),
 			transform.position.y,
 			transform.position.z
 		);

@@ -1,3 +1,4 @@
+using static __global;
 using UnityEngine;
 
 /*
@@ -21,7 +22,7 @@ public class bobber : MonoBehaviour {
 	}
 
 	void Update() {
-		bob += speed_base * global.game_scroll_speed * Time.deltaTime
+		bob += speed_base * game_scroll_speed * Time.deltaTime
 				 * (positive ? 1.00f : -1.00f);
 		if (bob > 1.00f | bob < 0.00f) {
 			positive = !positive;

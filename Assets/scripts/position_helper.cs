@@ -79,8 +79,6 @@ public struct position_helper {
 
 		/* Apply this just in case velocity_flush wasn't called. */
 		tick_percentage_last = 0.00f;
-
-		Debug.Log(jump_force);
 	}
 
 	/*
