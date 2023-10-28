@@ -101,7 +101,8 @@ public static class __global {
 	 * Returns the array filled with weapons.
 	 */
 	public static weapon[] combat_item_weapon_read() {
-		const string path = "Assets/Resources/text/item/weapon.txt";
+		string path = Application.streamingAssetsPath
+				+ "/text/item/weapon.txt";
 		const int lines_per_weapon = 8; /* Includes blank line. */
 		weapon[] weapons;
 		StreamReader stream_reader;
@@ -153,7 +154,8 @@ public static class __global {
 	 * Returns the array filled with weapons.
 	 */
 	public static armor[] combat_item_armor_read() {
-		const string path = "Assets/Resources/text/item/armor.txt";
+		string path = Application.streamingAssetsPath
+				+ "/text/item/armor.txt";
 		const int lines_per_armor = 8; /* Includes blank line. */
 		armor[] armors;
 		StreamReader stream_reader;
@@ -198,7 +200,8 @@ public static class __global {
 	 * Returns the array filled with weapons.
 	 */
 	public static combatant[] combat_enemy_read() {
-		const string path = "Assets/Resources/text/enemy.txt";
+		string path = Application.streamingAssetsPath
+				+ "/text/enemy.txt";
 		const int lines_per_enemy = 7; /* Includes blank line. */
 		combatant[] enemy;
 		StreamReader stream_reader;

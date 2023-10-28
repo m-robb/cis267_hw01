@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 public class game_over_update : MonoBehaviour {
-	const string path = "Assets/Resources/text/highscore.txt";
+	string path = Application.streamingAssetsPath + "/text/highscore.txt";
 	public GameObject score;
 	public GameObject score_high;
 

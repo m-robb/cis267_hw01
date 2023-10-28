@@ -1,0 +1,13 @@
+dragon
+Dragon
+50
+20
+50
+0
+
+slime
+Slime
+5
+2
+0
+0
